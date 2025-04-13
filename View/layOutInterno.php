@@ -22,7 +22,6 @@ function PrintCss(){
                 <link href="Styles/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
                 <link href="Styles/assets/vendor/aos/aos.css" rel="stylesheet">
                 <link href="Styles/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-                <link href="Styles/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
                 <!-- Main CSS File -->
                 <link href="Styles/assets/css/main.css" rel="stylesheet">
@@ -32,27 +31,25 @@ function PrintCss(){
 function NavBar(){
     echo '<nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="../View/home.php">Home</a></li>
+                    <li><a href="../View/principal.php">Principal</a></li>
                 </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>';
 }
 
 function Scripts(){
-    echo '<script src="Scripts/bootstrap.bundle.min.js"></script>
+    echo ' 
+        <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <script src="Scripts/main.js"></script>
+            <script src="Scripts/bootstrap.bundle.min.js"></script>
             <script src="Scripts/validate.js"></script>
             <script src="Scripts/aos.js"></script>
             <script src="Scripts/glightbox.min.js"></script>
             <script src="Scripts/purecounter_vanilla.js"></script>
             <script src="Scripts/swiper-bundle.min.js"></script>
             <script src="Scripts/imagesloaded.pkgd.min.js"></script>
-            <script src="Scripts/isotope.pkgd.min.js"></script>
-        <script src="Scripts/main.js"></script>';
+            <script src="Scripts/isotope.pkgd.min.js"></script>';
 }
 
 function Footer(){
