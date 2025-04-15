@@ -41,6 +41,8 @@ CREATE TABLE `principal` (
 LOCK TABLES `principal` WRITE;
 /*!40000 ALTER TABLE `principal` DISABLE KEYS */;
 INSERT INTO `principal` VALUES (1,'prueba1',4000.00,1000.00,'cancelado');
+INSERT INTO `principal` VALUES (2,'prueba2',4000.00,1000.00,'Pendiente');
+
 /*!40000 ALTER TABLE `principal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
