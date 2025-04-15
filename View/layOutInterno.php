@@ -33,6 +33,7 @@ function NavBar(){
                 <ul>
                     <li><a href="../View/home.php">Home</a></li>
                     <li><a href="../View/principal.php">Principal</a></li>
+                    <li><a href="../View/abonos.php">Abonos</a></li>
                 </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>';
