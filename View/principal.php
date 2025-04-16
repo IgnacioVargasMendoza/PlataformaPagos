@@ -43,30 +43,39 @@
 
       <div class="modal-body">
 
-        <div class="mb-3 d-flex align-items-start">
-          <label class="form-label me-3 mt-2">Compra</label>
-          <div class="flex-grow-1">
-            <div class="border p-2 bg-light mb-1">Producto 1</div>
-            <div class="border p-2 bg-light mb-1">Producto 2</div>
-            <div class="border p-2 bg-light mb-1">..</div>
-            <div class="border p-2 bg-light mb-1">..</div>
+      <div class="mb-3">
+            <label for="compraSelect" class="form-label">Compra</label>
+            <select class="form-select" id="compraSelect" name="id_compra" required>
+              <option value="" selected disabled>-- Seleccione --</option>
+              <?php
+                  $pendientes = ConsultarPrincipal(1);
+                  while ($c = mysqli_fetch_assoc($pendientes)) {
+                      echo '<option value="' . $c['id_principal'] . '">' .
+                           $c['id_principal'] . ' - ' . $c['descripcion'] .
+                           '</option>';
+                  }
+              ?>
+            </select>
           </div>
-          <button class="btn btn-secondary ms-2">Consultar</button>
-        </div>
 
         <div class="mb-3">
           <label for="saldoAnterior" class="form-label">Saldo Anterior</label>
-          <input type="text" class="form-control" id="saldoAnterior" placeholder="Saldo anterior">
+          <input type="text" class="form-control" id="saldoAnterior" placeholder="Saldo anterior" readonly>
         </div>
 
-        <div class="mb-4">
-          <label for="abono" class="form-label">Abono</label>
-          <input type="text" class="form-control" id="abono" placeholder="Monto a abonar">
-        </div>
+        <div class="mb-3">
+            <label for="abono" class="form-label">Abono</label>
+            <input type="number" step="0.01" min="0.01" class="form-control" id="abono"
+                   name="abono" required>
+            <div id="msgError" class="invalid-feedback">
+              El abono no puede ser mayor al saldo anterior.
+            </div>
+          </div>
 
-        <div class="text-center">
-          <button class="btn btn-secondary w-100">Abonar</button>
-        </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100" id="btnAbonar" >Abonar</button>
+          </div>
+
 
       </div>
     </div>
@@ -76,37 +85,33 @@
 
     <div class="container-fluid">
         <table id="example" class="table">
-            <thead>
-                <tr>
-                    <th>Codigo Compra</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Saldo</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
+              <thead>
+                  <tr>
+                      <th>Codigo Compra</th>
+                      <th>Descripción</th>
+                      <th>Precio</th>
+                      <th>Saldo</th>
+                      <th>Estado</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <?php
+                    $datos = ConsultarPrincipal(0);
 
-            <tbody>
-
-                                <tbody>
-                                    <?php
-                                        $datos = ConsultarPrincipal();
-
-                                        while($row = mysqli_fetch_array($datos))
-                                        {
-                                            echo "<tr>";
-                                            echo "<td>" . $row["id_principal"] . "</td>";
-                                            echo "<td>" . $row["descripcion"] . "</td>";
-                                            echo "<td> $ " . $row["precio"] . "</td>";
-                                            echo "<td> $ " . $row["saldo"] . "</td>";
-                                            echo "<td> ". $row["estado"] . "</td>";                                  
-                                            echo "</tr>";
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
+                    while ($row = mysqli_fetch_assoc($datos)) {
+                      echo "<tr>";
+                      echo "<td>{$row['id_principal']}</td>";
+                      echo "<td>{$row['descripcion']}</td>";
+                      echo "<td>$ {$row['precio']}</td>";
+                      echo "<td>$ {$row['saldo']}</td>";
+                      echo "<td>{$row['DescripcionEstado']}</td>";
+                      echo "</tr>";
+                  }
+                  
+                ?>
+              </tbody>
+         </table>
+                  </div>
                 </div>
 
                 </div>
@@ -120,6 +125,7 @@
 <?php Footer(); ?>
 
 <?php Scripts(); ?>
+<script src="Scripts/abonar.js"></script>
 
 </body>
 

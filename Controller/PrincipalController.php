@@ -1,8 +1,8 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/PlataformaPagos/Model/PrincipalModel.php";
 
-    function ConsultarPrincipal()
+    function ConsultarPrincipal($estado)
     {
-        return ConsultarOfertasModel();
+        return ConsultarOfertasModel($estado);
     }
 ?>

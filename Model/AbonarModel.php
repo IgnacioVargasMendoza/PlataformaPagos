@@ -1,19 +1,18 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/PlataformaPagos/Model/ConexionBD.php";
 
-    function ConsultarOfertasModel(bool $estado)
+    function RegistrarAbono($idCompra, $monto)
     {
         try
         {
             $context = AbrirBaseDatos();
-            $valor = $estado ? 1 : 0; 
-            $sentencia = "CALL SP_ConsultarPrincipal('$valor')";
+            $sentencia = "CALL RegistrarAbono('$idCompra', '$monto')";
             $resultado = $context -> query($sentencia);
     
             CerrarBaseDatos($context);
             return $resultado;
         }
-        catch(Exception $error)
+        catch(Exception)
         {
             return null;
         }        
